@@ -1,10 +1,13 @@
 ﻿using GregBot.Builders;
 using GregBot.Domain.Configuration;
-using GregBot.Modules;
+using GregBot.Modules.Parrot;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Configuration;
+using System.Threading.Tasks;
+using GregBot.Domain.Interfaces;
+using GregBot.Services;
 
 var config = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
@@ -15,9 +18,10 @@ var services = new ServiceCollection()
     .AddLogging(options => options
         .AddConfiguration(config.GetSection("Logging"))
         .AddConsole())
-    .AddScoped<ParrotModule>()
-    .AddScoped<GregBotBuilder>()
-    .AddScoped<GregBot.GregBot>()
+    .AddSingleton<IMessageService, MessageService>()
+    .AddSingleton<ParrotModule>()
+    .AddTransient<GregBotBuilder>()
+    .AddTransient<GregBot.Domain.GregBot>()
     .BuildServiceProvider();
 
 var bot = services.GetRequiredService<GregBotBuilder>()

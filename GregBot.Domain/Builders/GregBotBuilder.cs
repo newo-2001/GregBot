@@ -9,9 +9,9 @@ public class GregBotBuilder
 {
     private readonly ILogger<GregBotBuilder> _logger;
     private readonly IDictionary<int, IModule> _modules = new SortedList<int, IModule>();
-    private readonly GregBot _bot;
+    private readonly Domain.GregBot _bot;
 
-    public GregBotBuilder(GregBot bot, ILogger<GregBotBuilder> logger)
+    public GregBotBuilder(Domain.GregBot bot, ILogger<GregBotBuilder> logger)
     {
         _bot = bot;
         _logger = logger;
@@ -28,7 +28,7 @@ public class GregBotBuilder
         return this;
     }
     
-    public GregBot Build()
+    public Domain.GregBot Build()
     {
         foreach (var (_, module) in _modules)
         {

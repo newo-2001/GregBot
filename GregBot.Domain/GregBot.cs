@@ -1,15 +1,15 @@
-﻿using Discord;
+﻿using System;
+using System.Threading.Tasks;
+using Discord;
 using Discord.WebSocket;
 using GregBot.Domain.Configuration;
+using GregBot.Domain.Events;
 using GregBot.Domain.Interfaces;
 using GregBot.Domain.Models;
-using GregBot.Events;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using System;
-using System.Threading.Tasks;
 
-namespace GregBot;
+namespace GregBot.Domain;
 
 public class GregBot
 {
@@ -51,7 +51,7 @@ public class GregBot
     private Task DispatchMessageEvent(SocketMessage message)
     {
         var author = message.Author.Username;
-        _logger.LogDebug("Received message: [{user}] {message}", author, message.Content);
+        _logger.LogDebug("Received message: [{User}] {Message}", author, message.Content);
         
         var @event = new MessageEvent(message);
         return _messageDispatcher.Dispatch(@event);
@@ -60,13 +60,13 @@ public class GregBot
     private Task OnReady()
     {
         var self = _client.CurrentUser;
-        _logger.LogInformation("Logged into Discord as {name}.", self.Username);
+        _logger.LogInformation("Logged into Discord as {Name}", self.Username);
         return Task.CompletedTask;
     }
 
     private Task OnDisconnect(Exception ex)
     {
-        _logger.LogInformation("Disconnected from Discord.");
+        _logger.LogInformation("Disconnected from Discord");
         return Task.CompletedTask;
     }
 }

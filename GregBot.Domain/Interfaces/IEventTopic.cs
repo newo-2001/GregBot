@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using GregBot.Domain.Events;
+using GregBot.Domain.Models;
 
 namespace GregBot.Domain.Interfaces;
 

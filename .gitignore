@@ -2,5 +2,6 @@ appsettings.json
 .vs
 .vscode
 .idea
+*.sln.DotSettings.user
 **/bin
 **/obj

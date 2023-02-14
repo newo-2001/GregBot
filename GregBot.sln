@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33209.295
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot", "GregBot\GregBot.csproj", "{FC02C2A2-249B-4AD1-895A-FDF96EDC05FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot", "GregBot\GregBot.csproj", "{FC02C2A2-249B-4AD1-895A-FDF96EDC05FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot.Domain", "GregBot.Domain\GregBot.Domain.csproj", "{8CAB0E70-4908-4BBE-9652-6ECC27852800}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot.Domain", "GregBot.Domain\GregBot.Domain.csproj", "{8CAB0E70-4908-4BBE-9652-6ECC27852800}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GregBot.Modules.Parrot", "GregBot.Modules.Parrot\GregBot.Modules.Parrot.fsproj", "{96205EC4-534C-47DB-8467-1859BCBCE83C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot.Tests", "GregBot.Tests\GregBot.Tests.csproj", "{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
