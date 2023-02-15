@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\GregBot\GregBot.csproj" />
+    <ProjectReference Include="..\GregBot.Modules.Parrot\GregBot.Modules.Parrot.fsproj" />
   </ItemGroup>
-
 </Project>

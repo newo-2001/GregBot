@@ -4,7 +4,6 @@ using GregBot.Modules.Parrot;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Configuration;
 using System.Threading.Tasks;
 using GregBot.Domain.Interfaces;
 using GregBot.Services;

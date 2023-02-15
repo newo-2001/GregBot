@@ -31,5 +31,3 @@ module Matchers =
     let LowerCase matcher: Matcher =
         fun msg -> msg.ToLowerInvariant()
         >> matcher
-
-

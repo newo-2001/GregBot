@@ -9,6 +9,15 @@
     <Compile Include="Matchers.fs" />
     <Compile Include="Rules.fs" />
     <Compile Include="Replies.fs" />
+    <Compile Include="ParrotModule.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GregBot.Domain\GregBot.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

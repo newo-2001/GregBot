@@ -3,9 +3,9 @@ using GregBot.Domain.Models;
 
 namespace GregBot.Domain.Interfaces;
 
-public interface IEventTopic<E> where E : Event
+public interface IEventTopic<out T> where T : Event
 {
-    void Subscribe(EventHandler<E> handler);
+    void Subscribe(EventHandler<T> handler);
 }
 
-public delegate Task EventHandler<E>(E @event) where E : Event;
+public delegate Task EventHandler<in T>(T @event) where T : Event;

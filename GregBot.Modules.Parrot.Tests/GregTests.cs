@@ -2,7 +2,7 @@
 using GregBot.Modules.Parrot;
 using FluentAssertions;
 
-namespace GregBot.Tests.Parrot;
+namespace GregBot.Modules.Parrot.Tests;
 public class GregTests
 {
     public class ReplyIsNullWhen
@@ -16,7 +16,7 @@ public class GregTests
 
     public class ReplyIsGregWhen
     {
-        private readonly string _response = "greg";
+        private const string RESPONSE = "greg";
 
         [Theory]
         [InlineData("greg")]
@@ -24,25 +24,25 @@ public class GregTests
         [InlineData("aggregate")]
         public void MessageContainsTheStringGreg(string message)
         {
-            Replies.ReplyFor(message).Should().Be(_response);
+            Replies.ReplyFor(message).Should().Be(RESPONSE);
         }
 
         [Fact]
         public void MessageContainsTheStringGregWithUppercaseLetters()
         {
-            Replies.ReplyFor("Greg").Should().Be(_response);
+            Replies.ReplyFor("Greg").Should().Be(RESPONSE);
         }
 
         [Fact]
         public void MessageContainsTheStringGregInCyrillic()
         {
-            Replies.ReplyFor("грег").Should().Be(_response);
+            Replies.ReplyFor("грег").Should().Be(RESPONSE);
         }
 
         [Fact]
         public void MessageContainsTheStringGregInCyrillicWithUppercaseLetters()
         {
-            Replies.ReplyFor("ГреГ").Should().Be(_response);
+            Replies.ReplyFor("ГреГ").Should().Be(RESPONSE);
         }
     }
 }
