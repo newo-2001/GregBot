@@ -58,16 +58,18 @@ public class SendableMessageAssertions : ReferenceTypeAssertions<SendableMessage
         Execute.Assertion
             .Given(() => Subject)
             .ForCondition(message => message is null || !message.Attachments!.Any())
-            .FailWith("Expected message to have no attachments but it had '{0}'", Subject.Attachments);
+            .FailWith("Expected message to have no attachments but it had '{0}'",
+                Subject.Attachments?.Select(x => x.FileName));
         return new AndConstraint<SendableMessageAssertions>(this);
     }
 
-    public AndConstraint<SendableMessageAssertions> HaveAttachment(FileAttachment attachment)
+    public AndConstraint<SendableMessageAssertions> HaveAttachment(string fileName)
     {
         Execute.Assertion
             .Given(() => Subject)
-            .ForCondition(message => message.Attachments?.Contains(attachment) ?? false)
-            .FailWith("Expected message to have attachment '{0}', but it didn't and instead had {1}", attachment, Subject.Attachments);
+            .ForCondition(message => message.Attachments?.Any(x => x.FileName.Equals(fileName)) ?? false)
+            .FailWith("Expected message to have attachment '{0}', but it didn't and instead had {1}",
+                fileName, Subject.Attachments?.Select(x => x.FileName));
         return new AndConstraint<SendableMessageAssertions>(this);
     }
 }

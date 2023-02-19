@@ -10,4 +10,10 @@
       <ProjectReference Include="..\GregBot.Domain\GregBot.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Update="Resources\28.jpg">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

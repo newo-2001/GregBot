@@ -3,7 +3,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using Discord;
 using GregBot.Domain.Configuration;
-using GregBot.Domain.Extensions;
 using GregBot.Domain.Interfaces;
 using GregBot.Domain.Models;
 using Microsoft.Extensions.Options;
@@ -43,7 +42,7 @@ public class MessageService : IMessageService
             case 1:
                 return SendWithSingleAttachment(channel, message);
             default:
-                return SendWithMulitpleAttachments(channel, message);
+                return SendWithMultipleAttachments(channel, message);
         }
     }
     
@@ -59,7 +58,7 @@ public class MessageService : IMessageService
             isTTS: message.Tts, embeds: message.Embeds?.ToArray(),
             stickers: message.Stickers?.ToArray(), messageReference: message.ReplyTo);
     
-    private static Task SendWithMulitpleAttachments(IMessageChannel channel, SendableMessage message) =>
+    private static Task SendWithMultipleAttachments(IMessageChannel channel, SendableMessage message) =>
        channel.SendFilesAsync(
            text: message.Content, attachments: message.Attachments!.ToArray(),
            isTTS: message.Tts, embeds: message.Embeds?.ToArray(),

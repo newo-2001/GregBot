@@ -1,4 +1,6 @@
-﻿using GregBot.Domain.Models;
+﻿using System.Text.RegularExpressions;
+using Discord;
+using GregBot.Domain.Models;
 
 using static GregBot.Modules.Parrot.Matchers;
 
@@ -8,8 +10,10 @@ public delegate SendableMessage? ParrotRule(string message);
 
 public delegate IEnumerable<ParrotRule> ParrotRuleProvider();
 
-public static class Rules
+public static partial class Rules
 {
+    private static readonly SendableMessage Narancia28 = new(new FileAttachment("Resources/28.jpg"));
+    
     public static readonly ParrotRule Greg = Any(
         new[]
         {
@@ -37,8 +41,14 @@ public static class Rules
         .Or(MatchWord("rats")).AsLowerCase()
         .Reply(new SendableMessage("haha funny rat mod"));
 
+    public static readonly ParrotRule Narancia = MatchRegex(Number28())
+        .Reply(Narancia28);
+
     public static readonly IEnumerable<ParrotRule> All = new[]
     {
-        Greg, United, Wysi, Wyfsi, Neat, Rat
+        Greg, United, Wysi, Wyfsi, Neat, Rat, Narancia
     };
+
+    [GeneratedRegex("(^|.*[^\\d])28([^\\d].*|$)")]
+    private static partial Regex Number28();
 }
