@@ -7,12 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot", "GregBot\GregBot.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot.Domain", "GregBot.Domain\GregBot.Domain.csproj", "{8CAB0E70-4908-4BBE-9652-6ECC27852800}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "GregBot.Modules.Parrot", "GregBot.Modules.Parrot\GregBot.Modules.Parrot.fsproj", "{96205EC4-534C-47DB-8467-1859BCBCE83C}"
-	ProjectSection(ProjectDependencies) = postProject
-		{8CAB0E70-4908-4BBE-9652-6ECC27852800} = {8CAB0E70-4908-4BBE-9652-6ECC27852800}
-	EndProjectSection
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot.Modules.Parrot.Tests", "GregBot.Modules.Parrot.Tests\GregBot.Modules.Parrot.Tests.csproj", "{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Modules.Parrot", "Gregbot.Modules.Parrot\Gregbot.Modules.Parrot.csproj", "{34577E0F-0A7D-47B8-9398-714527ADADA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Domain.Testing", "Gregbot.Domain.Testing\Gregbot.Domain.Testing.csproj", "{BADDCD2B-516C-4873-BFF1-761A0933EF89}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,14 +27,18 @@ Global
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CAB0E70-4908-4BBE-9652-6ECC27852800}.Release|Any CPU.Build.0 = Release|Any CPU
-		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{96205EC4-534C-47DB-8467-1859BCBCE83C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B50F40A-BC6F-461E-9DBF-53ACBD4A26EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34577E0F-0A7D-47B8-9398-714527ADADA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34577E0F-0A7D-47B8-9398-714527ADADA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34577E0F-0A7D-47B8-9398-714527ADADA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34577E0F-0A7D-47B8-9398-714527ADADA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

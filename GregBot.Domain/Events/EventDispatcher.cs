@@ -1,9 +1,8 @@
-﻿using GregBot.Domain.Attributes;
-using GregBot.Domain.Interfaces;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using GregBot.Domain.Attributes;
 
-namespace GregBot.Domain.Models;
+namespace GregBot.Domain.Events;
 
 public class EventDispatcher<E> : IEventTopic<E> where E : Event
 {

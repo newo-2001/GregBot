@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using GregBot.Domain.Models;
 
-namespace GregBot.Domain.Interfaces;
+namespace GregBot.Domain.Events;
 
 public interface IEventTopic<out T> where T : Event
 {

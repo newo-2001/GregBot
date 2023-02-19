@@ -1,17 +1,16 @@
 ﻿using GregBot.Domain.Attributes;
-using GregBot.Domain.Configuration;
 using GregBot.Domain.Interfaces;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 
-namespace GregBot.Builders;
+namespace GregBot.Domain.Builders;
 public class GregBotBuilder
 {
     private readonly ILogger<GregBotBuilder> _logger;
     private readonly IDictionary<int, IModule> _modules = new SortedList<int, IModule>();
-    private readonly Domain.GregBot _bot;
+    private readonly IGregBot _bot;
 
-    public GregBotBuilder(Domain.GregBot bot, ILogger<GregBotBuilder> logger)
+    public GregBotBuilder(IGregBot bot, ILogger<GregBotBuilder> logger)
     {
         _bot = bot;
         _logger = logger;
@@ -28,11 +27,11 @@ public class GregBotBuilder
         return this;
     }
     
-    public Domain.GregBot Build()
+    public IGregBot Build()
     {
         foreach (var (_, module) in _modules)
         {
-            _logger.LogInformation("Loading module {name}...", module.Name);
+            _logger.LogInformation("Loading module {Name}...", module.Name);
             module.Activate(_bot);
         }
 

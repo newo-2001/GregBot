@@ -1,10 +1,11 @@
-﻿using GregBot.Builders;
-using GregBot.Domain.Configuration;
+﻿using GregBot.Domain.Configuration;
 using GregBot.Modules.Parrot;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
+using GregBot.Domain;
+using GregBot.Domain.Builders;
 using GregBot.Domain.Interfaces;
 using GregBot.Services;
 
@@ -18,9 +19,10 @@ var services = new ServiceCollection()
         .AddConfiguration(config.GetSection("Logging"))
         .AddConsole())
     .AddSingleton<IMessageService, MessageService>()
+    .AddSingleton<ParrotRuleProvider>(() => Rules.All)
     .AddSingleton<ParrotModule>()
     .AddTransient<GregBotBuilder>()
-    .AddTransient<GregBot.Domain.GregBot>()
+    .AddTransient<IGregBot, GregBot.Domain.GregBot>()
     .BuildServiceProvider();
 
 var bot = services.GetRequiredService<GregBotBuilder>()

@@ -1,4 +1,4 @@
-﻿namespace GregBot.Domain.Models;
+﻿namespace GregBot.Domain.Events;
 
 public record Event
 {

@@ -2,5 +2,5 @@
 public interface IModule
 {
     string Name { get; }
-    void Activate(GregBot bot);
+    void Activate(IGregBot bot);
 }

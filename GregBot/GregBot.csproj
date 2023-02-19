@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GregBot.Domain\GregBot.Domain.csproj" />
-    <ProjectReference Include="..\GregBot.Modules.Parrot\GregBot.Modules.Parrot.fsproj" />
+    <ProjectReference Include="..\Gregbot.Modules.Parrot\Gregbot.Modules.Parrot.csproj" />
   </ItemGroup>
 
   <ItemGroup>

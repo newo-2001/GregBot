@@ -1,7 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Linq;
+using System.Threading.Tasks;
 using Discord;
 using GregBot.Domain.Configuration;
+using GregBot.Domain.Extensions;
 using GregBot.Domain.Interfaces;
+using GregBot.Domain.Models;
 using Microsoft.Extensions.Options;
 
 namespace GregBot.Services;
@@ -18,10 +22,46 @@ public class MessageService : IMessageService
     public bool IsSentBySelf(IMessage message) =>
         message.Author.Id.Equals(_discordConfiguration.ClientId);
 
-    public Task Reply(string reply, IMessage originalMessage)
+    public Task ReplyTo(IMessage original, SendableMessage reply)
     {
-        var messageReference = new MessageReference(originalMessage.Id);
-        var channel = originalMessage.Channel;
-        return channel.SendMessageAsync(reply, messageReference: messageReference);
+        var messageReference = new MessageReference(original.Id);
+        var newReply = reply with { ReplyTo = messageReference };
+        var channel = original.Channel;
+        
+        return Send(channel, newReply);
     }
+
+    public Task Send(IMessageChannel channel, SendableMessage message)
+    {
+        switch (message.Attachments?.Count())
+        {
+            case null:
+            case 0:
+                if (message.Content is null)
+                    throw new ArgumentException("Can't send empty message");
+                return SendWithoutAttachments(channel, message);
+            case 1:
+                return SendWithSingleAttachment(channel, message);
+            default:
+                return SendWithMulitpleAttachments(channel, message);
+        }
+    }
+    
+    private static Task SendWithoutAttachments(IMessageChannel channel, SendableMessage message) =>
+        channel.SendMessageAsync(
+            text: message.Content,
+            isTTS: message.Tts, embeds: message.Embeds?.ToArray(),
+            stickers: message.Stickers?.ToArray(), messageReference: message.ReplyTo);
+
+    private static Task SendWithSingleAttachment(IMessageChannel channel, SendableMessage message) =>
+        channel.SendFileAsync(
+            text: message.Content, attachment: message.Attachments!.First(),
+            isTTS: message.Tts, embeds: message.Embeds?.ToArray(),
+            stickers: message.Stickers?.ToArray(), messageReference: message.ReplyTo);
+    
+    private static Task SendWithMulitpleAttachments(IMessageChannel channel, SendableMessage message) =>
+       channel.SendFilesAsync(
+           text: message.Content, attachments: message.Attachments!.ToArray(),
+           isTTS: message.Tts, embeds: message.Embeds?.ToArray(),
+           stickers: message.Stickers?.ToArray(), messageReference: message.ReplyTo); 
 }

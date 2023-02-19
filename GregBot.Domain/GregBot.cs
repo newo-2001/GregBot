@@ -4,16 +4,14 @@ using Discord;
 using Discord.WebSocket;
 using GregBot.Domain.Configuration;
 using GregBot.Domain.Events;
-using GregBot.Domain.Interfaces;
-using GregBot.Domain.Models;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace GregBot.Domain;
 
-public class GregBot
+public class GregBot : IGregBot
 {
-    private readonly DiscordSocketClient _client = new DiscordSocketClient(
+    private readonly DiscordSocketClient _client = new(
         new DiscordSocketConfig()
         {
             GatewayIntents =
