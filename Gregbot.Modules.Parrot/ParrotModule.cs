@@ -2,6 +2,7 @@
 using GregBot.Domain.Attributes;
 using GregBot.Domain.Events;
 using GregBot.Domain.Interfaces;
+using GregBot.Domain.Services;
 using Microsoft.Extensions.Logging;
 
 namespace GregBot.Modules.Parrot;

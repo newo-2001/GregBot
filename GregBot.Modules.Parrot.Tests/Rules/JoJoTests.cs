@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using FluentAssertions;
-using Gregbot.Domain.Testing.Assertions;
+﻿using Gregbot.Domain.Testing.Assertions;
 using Xunit;
 
 namespace GregBot.Modules.Parrot.Tests.Rules;

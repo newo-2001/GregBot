@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using GregBot.Domain;
 using GregBot.Domain.Builders;
-using GregBot.Domain.Interfaces;
+using GregBot.Domain.Services;
 using GregBot.Services;
 
 var config = new ConfigurationBuilder()

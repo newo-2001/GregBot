@@ -1,8 +1,8 @@
 ﻿using Discord;
 using FakeItEasy;
 using GregBot.Domain.Events;
-using GregBot.Domain.Interfaces;
 using GregBot.Domain.Models;
+using GregBot.Domain.Services;
 using Gregbot.Domain.Testing.Mocks;
 using Microsoft.Extensions.Logging;
 using Moq;

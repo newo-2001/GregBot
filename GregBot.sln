@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Modules.Parrot", "G
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Domain.Testing", "Gregbot.Domain.Testing\Gregbot.Domain.Testing.csproj", "{BADDCD2B-516C-4873-BFF1-761A0933EF89}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Tests", "Gregbot.Tests\Gregbot.Tests.csproj", "{239B269A-AAD1-42E1-9D72-E73F03EBE522}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BADDCD2B-516C-4873-BFF1-761A0933EF89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{239B269A-AAD1-42E1-9D72-E73F03EBE522}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{239B269A-AAD1-42E1-9D72-E73F03EBE522}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{239B269A-AAD1-42E1-9D72-E73F03EBE522}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{239B269A-AAD1-42E1-9D72-E73F03EBE522}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

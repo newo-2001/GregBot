@@ -2,7 +2,7 @@
 using Discord;
 using GregBot.Domain.Models;
 
-namespace GregBot.Domain.Interfaces;
+namespace GregBot.Domain.Services;
 
 public interface IMessageService
 {

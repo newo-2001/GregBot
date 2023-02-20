@@ -5,6 +5,7 @@ using Discord;
 using GregBot.Domain.Configuration;
 using GregBot.Domain.Interfaces;
 using GregBot.Domain.Models;
+using GregBot.Domain.Services;
 using Microsoft.Extensions.Options;
 
 namespace GregBot.Services;
