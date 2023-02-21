@@ -1,14 +1,11 @@
-﻿using System.Text.RegularExpressions;
+﻿using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Discord;
 using GregBot.Domain.Models;
-
-using static GregBot.Modules.Parrot.Matchers;
+using GregBot.Domain.Modules.Parrot;
+using static GregBot.Domain.Modules.Parrot.Matchers;
 
 namespace GregBot.Modules.Parrot;
-
-public delegate SendableMessage? ParrotRule(string message);
-
-public delegate IEnumerable<ParrotRule> ParrotRuleProvider();
 
 public static partial class Rules
 {

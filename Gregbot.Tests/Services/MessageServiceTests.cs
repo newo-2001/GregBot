@@ -10,7 +10,7 @@ using Moq;
 using Xunit;
 using Times = Moq.Times;
 
-namespace Gregbot.Tests.Services;
+namespace GregBot.Tests.Services;
 
 using MessageVerification = Expression<Func<IMessageChannel, Task<IUserMessage>>>;
 
@@ -28,7 +28,11 @@ public class MessageServiceTests
         
         await _messageService.Send(_channelMock.Object, message);
 
-        _channelMock.Verify(VerifyMessage("test"));
+        _channelMock.Verify(x =>
+            x.SendMessageAsync(
+                "test", false, null, null, null, null, null, null, null, MessageFlags.None
+            ), Times.Once
+        );
     }
 
     [Fact]
@@ -39,7 +43,11 @@ public class MessageServiceTests
 
         await _messageService.Send(_channelMock.Object, message);
         
-        _channelMock.Verify(VerifyAttachment(attachment, "test"), Times.Once);
+        _channelMock.Verify(x =>
+            x.SendFileAsync(
+                attachment, "test", false, null, null, null, null, null, null, null, MessageFlags.None
+            ), Times.Once
+        );
     }
 
     [Fact]
@@ -50,17 +58,12 @@ public class MessageServiceTests
 
         await _messageService.Send(_channelMock.Object, message);
         
-        _channelMock.Verify(VerifyAttachments(attachments, "test"));
+        _channelMock.Verify(x =>
+            x.SendFilesAsync(
+                attachments, "test", false, null, null, null, null, null, null, null, MessageFlags.None
+            ), Times.Once
+        );
     }
 
     private static FileAttachment GivenAttachment(string name) => new(Stream.Null, name);
-
-    private static MessageVerification VerifyMessage(string? message) => x =>
-        x.SendMessageAsync(message, false, null, null, null, null, null, null, null, MessageFlags.None);
-
-    private static MessageVerification VerifyAttachment(FileAttachment attachment, string? message) => x =>
-        x.SendFileAsync(attachment, message, false, null, null, null, null, null, null, null, MessageFlags.None);
-    
-    private static MessageVerification VerifyAttachments(IEnumerable<FileAttachment> attachments, string? message) => x =>
-        x.SendFilesAsync(attachments, message, false, null, null, null, null, null, null, null, MessageFlags.None);
 }

@@ -1,11 +1,13 @@
-﻿using GregBot.Domain;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using GregBot.Domain;
 using GregBot.Domain.Attributes;
 using GregBot.Domain.Events;
 using GregBot.Domain.Interfaces;
 using GregBot.Domain.Services;
 using Microsoft.Extensions.Logging;
 
-namespace GregBot.Modules.Parrot;
+namespace GregBot.Domain.Modules.Parrot;
 
 [Priority(Priority.Low)]
 public class ParrotModule : IModule

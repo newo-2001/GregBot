@@ -1,9 +1,9 @@
 ﻿using Gregbot.Domain.Testing.Assertions;
 using Xunit;
 
-namespace GregBot.Modules.Parrot.Tests.Rules;
+namespace GregBot.Tests.Modules.Parrot.Rules;
 
-using Parrot;
+using Rules = GregBot.Modules.Parrot.Rules;
 
 public class JoJoTests
 {

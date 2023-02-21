@@ -19,11 +19,13 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GregBot.Domain\GregBot.Domain.csproj" />
-    <ProjectReference Include="..\Gregbot.Modules.Parrot\Gregbot.Modules.Parrot.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Resources\28.jpg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

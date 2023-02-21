@@ -1,7 +1,7 @@
 ﻿using Gregbot.Domain.Testing.Assertions;
 using Xunit;
 
-namespace GregBot.Modules.Parrot.Tests.Rules;
+namespace GregBot.Tests.Modules.Parrot.Rules;
 
 using Rules = GregBot.Modules.Parrot.Rules;
 

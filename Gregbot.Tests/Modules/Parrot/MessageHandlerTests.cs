@@ -2,6 +2,7 @@
 using FakeItEasy;
 using GregBot.Domain.Events;
 using GregBot.Domain.Models;
+using GregBot.Domain.Modules.Parrot;
 using GregBot.Domain.Services;
 using Gregbot.Domain.Testing.Mocks;
 using Microsoft.Extensions.Logging;
@@ -9,7 +10,7 @@ using Moq;
 using Xunit;
 using Times = Moq.Times;
 
-namespace GregBot.Modules.Parrot.Tests;
+namespace GregBot.Tests.Modules.Parrot;
 
 public class MessageHandlerTests
 {

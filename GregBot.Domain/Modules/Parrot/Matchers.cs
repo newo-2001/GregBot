@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using GregBot.Domain.Extensions;
 using GregBot.Domain.Models;
 
-namespace GregBot.Modules.Parrot;
+namespace GregBot.Domain.Modules.Parrot;
 
 public delegate bool Matcher(string message);
 
