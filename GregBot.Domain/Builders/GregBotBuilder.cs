@@ -32,7 +32,7 @@ public class GregBotBuilder
         foreach (var (_, module) in _modules)
         {
             _logger.LogInformation("Loading module {Name}...", module.Name);
-            module.Activate(_bot);
+            module.Load(_bot);
         }
 
         return _bot;

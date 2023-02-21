@@ -7,7 +7,13 @@ using System.Threading.Tasks;
 using GregBot.Domain;
 using GregBot.Domain.Builders;
 using GregBot.Domain.Modules.Parrot;
+using GregBot.Domain.Modules.Wordle;
+using GregBot.Domain.Modules.Wordle.Repositories;
+using GregBot.Domain.Modules.Wordle.Services;
 using GregBot.Domain.Services;
+using GregBot.Modules.Wordle;
+using GregBot.Modules.Wordle.Repositories;
+using GregBot.Modules.Wordle.Services;
 using GregBot.Services;
 
 var config = new ConfigurationBuilder()
@@ -16,18 +22,24 @@ var config = new ConfigurationBuilder()
 
 var services = new ServiceCollection()
     .Configure<DiscordConfiguration>(config.GetSection(DiscordConfiguration.Location))
+    .Configure<WordleConfiguration>(config.GetSection(WordleConfiguration.Location))
     .AddLogging(options => options
         .AddConfiguration(config.GetSection("Logging"))
         .AddConsole())
-    .AddSingleton<IMessageService, MessageService>()
+    .AddTransient<IMessageService, MessageService>()
     .AddSingleton<ParrotRuleProvider>(() => Rules.All)
-    .AddSingleton<ParrotModule>()
+    .AddTransient<ParrotModule>()
+    .AddSingleton<WordleSolutionProvider>(_ => "kleand")
+    .AddTransient<IGuessService, GuessService>()
+    .AddSingleton<IGuessRepository, InMemoryGuessRepository>()
+    .AddTransient<WordleModule>()
     .AddTransient<GregBotBuilder>()
     .AddTransient<IGregBot, GregBot.Domain.GregBot>()
     .BuildServiceProvider();
 
 var bot = services.GetRequiredService<GregBotBuilder>()
     .LoadModule(services.GetService<ParrotModule>())
+    .LoadModule(services.GetService<WordleModule>())
     .Build();
 
 await bot.Login();
