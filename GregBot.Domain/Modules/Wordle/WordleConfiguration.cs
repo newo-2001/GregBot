@@ -6,6 +6,6 @@ public class WordleConfiguration
 {
     public static string Location => "Wordle";
     public required ulong ChannelId { get; init; }
-    public int GuessesPerDay { get; init; } = 5;
+    public int GuessesPerDay { get; init; } = 6;
     public DateTime Epoch { get; init; } = DateTime.UtcNow.Date;
 }

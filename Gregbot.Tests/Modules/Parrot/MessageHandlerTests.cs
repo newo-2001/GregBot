@@ -5,6 +5,7 @@ using GregBot.Domain.Models;
 using GregBot.Domain.Modules.Parrot;
 using GregBot.Domain.Services;
 using Gregbot.Domain.Testing.Mocks;
+using GregBot.Modules.Parrot;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
@@ -22,7 +23,7 @@ public class MessageHandlerTests
     public MessageHandlerTests()
     {
         var parrot = new ParrotModule(() => _rules, _loggerMock.Object, _messageServiceMock.Object);
-        parrot.Activate(_botMock.Object);
+        parrot.Load(_botMock.Object);
     }
 
     [Fact]
@@ -66,5 +67,7 @@ public class MessageHandlerTests
         _botMock.Object.MessageEventDispatcher.Dispatch(new MessageEvent(message));
     
     private void AssertNoReplyWasSent() =>
-        _messageServiceMock.Verify(x => x.ReplyTo(It.IsAny<IMessage>(), It.IsAny<SendableMessage>()), Times.Never);
+        _messageServiceMock.Verify(x =>
+            x.ReplyTo(It.IsAny<IMessage>(), It.IsAny<SendableMessage>()
+        ), Times.Never);
 }
