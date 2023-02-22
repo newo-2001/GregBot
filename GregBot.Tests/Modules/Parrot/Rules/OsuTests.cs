@@ -1,4 +1,4 @@
-﻿using Gregbot.Domain.Testing.Assertions;
+﻿using GregBot.Domain.Testing.Assertions;
 using Xunit;
 
 namespace GregBot.Tests.Modules.Parrot.Rules;

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace GregBot.Domain.Extensions;
@@ -27,4 +28,7 @@ public static class EnumerableExtensions
 
         return false;
     }
+
+    public static IEnumerable<(T item, int index)> Indexed<T>(this IEnumerable<T> items) =>
+        items.Select((x, i) => (x, i));
 }

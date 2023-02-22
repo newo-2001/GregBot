@@ -1,14 +1,13 @@
 ﻿using Discord;
 using FakeItEasy;
 using FluentAssertions;
+using GregBot.Domain.Extensions;
 using GregBot.Domain.Modules.Wordle;
 using GregBot.Domain.Modules.Wordle.Repositories;
 using GregBot.Modules.Wordle.Repositories;
 using Xunit;
 
-using static Gregbot.Domain.Testing.Modules.Wordle.Data.Guesses;
-
-namespace Gregbot.Tests.Modules.Wordle.Repositories;
+namespace GregBot.Tests.Modules.Wordle.Repositories;
 
 public class InMemoryGuessRepositoryTests
 {
@@ -31,7 +30,7 @@ public class InMemoryGuessRepositoryTests
     public async Task GivenGuessesWhenRetrievingGuessesTheyAreReturned()
     {
         var user = A.Fake<IUser>();
-        var guesses = new[] { Speedwagon, Dio };
+        var guesses = UniqueGuessesWithoutFeedback(3).ToList();
 
         await GivenGuessesForUser(user, guesses);
         
@@ -51,16 +50,28 @@ public class InMemoryGuessRepositoryTests
     [Fact]
     public async Task GivenGuessesForAUserRetrievingGuessesForAnotherUserReturnsNoGuesses()
     {
-        var self = A.Fake<IUser>();
-        var other = A.Fake<IUser>();
+        var guesses = A.CollectionOfDummy<Guess>(1);
+        var users = UniqueUsers(2).ToList();
         
-        A.CallTo(() => self.Id).Returns(1ul);
-        A.CallTo(() => other.Id).Returns(2ul);
+        await GivenGuessesForUser(users.First(), guesses);
 
-        await GivenGuessesForUser(self, new[] { Dio });
-
-        (await _guesses.GetGuessesForUser(other))
+        (await _guesses.GetGuessesForUser(users.Last()))
             .Should().BeEmpty();
+    }
+
+    private static IEnumerable<Guess> UniqueGuessesWithoutFeedback(int amount) =>
+        Enumerable.Range(0, amount).Select(i => new Guess(i.ToString(), Array.Empty<Feedback>()));
+
+    private static IEnumerable<IUser> UniqueUsers(int amount)
+    {
+        var users = A.CollectionOfFake<IUser>(amount);
+
+        foreach (var (user, i) in users.Indexed())
+        {
+            A.CallTo(() => user.Id).Returns((ulong) i);
+        }
+
+        return users;
     }
 
     private async Task GivenGuessesForUser(IUser user, IEnumerable<Guess> guesses)

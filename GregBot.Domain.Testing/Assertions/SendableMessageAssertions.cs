@@ -4,7 +4,7 @@ using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 using GregBot.Domain.Models;
 
-namespace Gregbot.Domain.Testing.Assertions;
+namespace GregBot.Domain.Testing.Assertions;
 
 public static class SendableMessageExtensions
 {

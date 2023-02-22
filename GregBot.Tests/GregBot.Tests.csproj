@@ -25,7 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Gregbot.Domain.Testing\Gregbot.Domain.Testing.csproj" />
+      <ProjectReference Include="..\GregBot.Domain.Testing\GregBot.Domain.Testing.csproj" />
       <ProjectReference Include="..\GregBot.Domain\GregBot.Domain.csproj" />
       <ProjectReference Include="..\GregBot\GregBot.csproj" />
     </ItemGroup>

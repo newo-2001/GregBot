@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
+using GregBot.Domain.Interfaces;
 using GregBot.Domain.Modules.Wordle;
 using GregBot.Domain.Modules.Wordle.Repositories;
 using GregBot.Domain.Modules.Wordle.Services;
@@ -12,15 +13,20 @@ namespace GregBot.Modules.Wordle.Services;
 
 public class GuessService : IGuessService
 {
-    private readonly WordleConfiguration _wordleConfig;
+    private const StringComparison COMPARISON = StringComparison.InvariantCultureIgnoreCase;
+    
     private readonly WordleSolutionProvider _solutionProvider;
+    private readonly TimeProvider _timeProvider;
+    private readonly WordleConfiguration _wordleConfig;
     private readonly IGuessRepository _guessRepository;
 
     public GuessService(IOptions<WordleConfiguration> wordleConfig,
-        WordleSolutionProvider solutionProvider,
-        IGuessRepository guessRepository)
+        IGuessRepository guessRepository,
+        TimeProvider timeProvider,
+        WordleSolutionProvider solutionProvider)
     {
         _wordleConfig = wordleConfig.Value;
+        _timeProvider = timeProvider;
         _solutionProvider = solutionProvider;
         _guessRepository = guessRepository;
     }
@@ -44,11 +50,11 @@ public class GuessService : IGuessService
         var answer = Solution;
         
         var feedback = answer
-            .Zip(guess)
+            .Zip(guess.ToLowerInvariant())
             .Select(pair => pair switch
             {
-                var (guessed, correct) when guessed == correct => Feedback.Correct,
-                var (guessed, _) when answer.Contains(guessed) => Feedback.PartiallyCorrect,
+                var (correct, guessed) when correct.ToString().Equals(guessed.ToString(), COMPARISON) => Feedback.Correct,
+                var (_, guessed) when answer.Contains(guessed, COMPARISON) => Feedback.PartiallyCorrect,
                 _ => Feedback.Incorrect
             });
 
@@ -58,5 +64,6 @@ public class GuessService : IGuessService
         return result;
     }
 
-    private string Solution => _solutionProvider(DateTime.UtcNow);
+    private DateTime Now => _timeProvider();
+    private string Solution => _solutionProvider(Now);
 }

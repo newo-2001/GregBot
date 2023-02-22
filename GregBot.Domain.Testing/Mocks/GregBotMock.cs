@@ -1,7 +1,7 @@
 ﻿using GregBot.Domain;
 using GregBot.Domain.Events;
 
-namespace Gregbot.Domain.Testing.Mocks;
+namespace GregBot.Domain.Testing.Mocks;
 
 public abstract class GregBotMock : IGregBot
 {

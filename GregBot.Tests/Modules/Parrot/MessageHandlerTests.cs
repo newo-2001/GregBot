@@ -4,7 +4,7 @@ using GregBot.Domain.Events;
 using GregBot.Domain.Models;
 using GregBot.Domain.Modules.Parrot;
 using GregBot.Domain.Services;
-using Gregbot.Domain.Testing.Mocks;
+using GregBot.Domain.Testing.Mocks;
 using GregBot.Modules.Parrot;
 using Microsoft.Extensions.Logging;
 using Moq;

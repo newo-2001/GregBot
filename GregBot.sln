@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot", "GregBot\GregBot.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GregBot.Domain", "GregBot.Domain\GregBot.Domain.csproj", "{8CAB0E70-4908-4BBE-9652-6ECC27852800}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Domain.Testing", "Gregbot.Domain.Testing\Gregbot.Domain.Testing.csproj", "{BADDCD2B-516C-4873-BFF1-761A0933EF89}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot.Domain.Testing", "GregBot.Domain.Testing\GregBot.Domain.Testing.csproj", "{BADDCD2B-516C-4873-BFF1-761A0933EF89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gregbot.Tests", "Gregbot.Tests\Gregbot.Tests.csproj", "{239B269A-AAD1-42E1-9D72-E73F03EBE522}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GregBot.Tests", "GregBot.Tests\GregBot.Tests.csproj", "{239B269A-AAD1-42E1-9D72-E73F03EBE522}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

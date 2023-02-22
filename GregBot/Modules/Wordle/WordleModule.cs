@@ -38,7 +38,7 @@ public class WordleModule : IModule
     
     public string Name => "Wordle";
 
-    public int DaysSinceEpoch => (Now.Date - _wordleConfig.Epoch).Days + 1;
+    private int DaysSinceEpoch => (Now.Date - _wordleConfig.Epoch).Days + 1;
     
     public void Load(IGregBot bot)
     {
@@ -80,7 +80,7 @@ public class WordleModule : IModule
         else
         {
             var summary = string.Join('\n', await _guessService.FeedbackForUser(user));
-            var reply = new SendableMessage($"Kleand {DaysSinceEpoch}\t{usedGuesses}/{maxGuesses}\n{summary}");
+            var reply = new SendableMessage($"{_wordleConfig.Name} {DaysSinceEpoch}\t{usedGuesses}/{maxGuesses}\n{summary}");
             await _messageService.ReplyTo(message, reply);
         }
     }
