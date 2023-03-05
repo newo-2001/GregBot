@@ -11,6 +11,6 @@ public interface IGuessService
     Task<bool> UserHasGuessesRemaining(IUser user);
     Task<IEnumerable<Guess>> FeedbackForUser(IUser user);
     Task<Guess> Guess(IUser user, string guess);
-    bool IsValidGuess(string guess);
+    bool IsValidGuess(IMessage guess);
     Task ResetGuesses();
 }

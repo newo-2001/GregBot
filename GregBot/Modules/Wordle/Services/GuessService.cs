@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Discord;
-using GregBot.Domain.Interfaces;
+using GregBot.Domain.Core.Interfaces;
 using GregBot.Domain.Modules.Wordle;
 using GregBot.Domain.Modules.Wordle.Repositories;
 using GregBot.Domain.Modules.Wordle.Services;
@@ -38,12 +38,13 @@ public class GuessService : IGuessService
 
     public async Task<int> GuessesUsedByUser(IUser user) => (await FeedbackForUser(user)).Count();
 
-    public Task ResetGuesses() => _guessRepository.Reset();
+    public Task ResetGuesses() => _guessRepository.Clear();
 
     public Task<IEnumerable<Guess>> FeedbackForUser(IUser user) => _guessRepository.GetGuessesForUser(user);
 
     // WARNING: This check results in a race condition
-    public bool IsValidGuess(string guess) => guess.Length == Solution.Length;
+    public bool IsValidGuess(IMessage guess) =>
+        IsWordleChannel(guess.Channel) && guess.Content.Length == Solution.Length;
 
     public async Task<Guess> Guess(IUser user, string guess)
     {
@@ -66,4 +67,6 @@ public class GuessService : IGuessService
 
     private DateTime Now => _timeProvider();
     private string Solution => _solutionProvider(Now);
+    
+    private bool IsWordleChannel(IChannel channel) => channel.Id.Equals(_wordleConfig.ChannelId);
 }

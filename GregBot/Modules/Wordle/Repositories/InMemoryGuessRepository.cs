@@ -31,7 +31,7 @@ public class InMemoryGuessRepository : IGuessRepository
         return Task.CompletedTask;
     }
 
-    public Task Reset()
+    public Task Clear()
     {
         _guesses.Clear();
         return Task.CompletedTask;

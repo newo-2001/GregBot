@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GregBot.Domain.Models;
+using GregBot.Domain.Core.Models;
 
 namespace GregBot.Domain.Modules.Parrot; 
 

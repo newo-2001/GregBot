@@ -1,16 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using GregBot.Domain;
-using GregBot.Domain.Attributes;
-using GregBot.Domain.Events;
-using GregBot.Domain.Interfaces;
+using GregBot.Domain.Core.Attributes;
+using GregBot.Domain.Core.Events;
+using GregBot.Domain.Core.Interfaces;
+using GregBot.Domain.Core.Services;
 using GregBot.Domain.Modules.Parrot;
-using GregBot.Domain.Services;
 using Microsoft.Extensions.Logging;
 
 namespace GregBot.Modules.Parrot;
 
-[Priority(Priority.Low)]
 public class ParrotModule : IModule
 {
     private readonly ILogger<ParrotModule> _logger;
@@ -25,13 +23,9 @@ public class ParrotModule : IModule
     }
     
     public string Name => "Parrot";
-    public void Load(IGregBot bot)
-    {
-        bot.OnMessage.Subscribe(OnMessage);
-    }
 
-    [Priority(Priority.High)]
-    private Task OnMessage(MessageEvent @event)
+    [SubscribeEvent(EventPriority.HIGH)]
+    public Task OnMessage(MessageEvent @event)
     {
         var message = @event.Message;
 

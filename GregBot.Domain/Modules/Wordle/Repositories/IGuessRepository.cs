@@ -8,5 +8,5 @@ public interface IGuessRepository
 {
     Task<IEnumerable<Guess>> GetGuessesForUser(IUser user);
     Task AddGuess(IUser user, Guess guess);
-    Task Reset();
+    Task Clear();
 }

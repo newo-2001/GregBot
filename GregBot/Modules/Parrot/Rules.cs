@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using Discord;
-using GregBot.Domain.Models;
+using GregBot.Domain.Core.Models;
 using GregBot.Domain.Modules.Parrot;
 using static GregBot.Domain.Modules.Parrot.Matchers;
 

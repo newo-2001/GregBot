@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
-using GregBot.Domain.Extensions;
-using GregBot.Domain.Models;
+using GregBot.Domain.Core.Extensions;
+using GregBot.Domain.Core.Models;
 
 namespace GregBot.Domain.Modules.Parrot;
 
